@@ -1,0 +1,276 @@
+{% load static %}
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Ingreso de personas</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+	<link href='{% static "css/estilo.css" %}' rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src='{%static "js/formularios.js"%}'></script>
+	<!---<script type="text/javascript">
+function MM_showHideLayers() { //v9.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) 
+  with (document) if (getElementById && ((obj=getElementById(args[i]))!=null)) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+    </script>-->
+	</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="ingreso_salida.html">Registro Fronterizo</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="ingreso_salida.html">Registro Fronterizo</a></li>
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img
+							src='{% static "img/verified-user.png" %}' width="30px" height="30px"
+							alt="Usuario logeado"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="{% url 'salir' %}">Cerrar Sesion</a></li>
+					</ul>
+				</li>
+
+				<li><a href="#"></a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<h1>REGISTRO DE PERSONAS</h1>
+	<div class="container">
+		<form name="formpersonas">
+
+			<div class="form-inline">
+				<label>Nombre:</label>
+				<input name="textfield" type="text" required="required" id="textfield" placeholder="Ingrese nombre"
+					title="Ingrese el nombre de la persona" size="150px" maxlength="200">
+			</div>
+
+			<br>
+			<div class="form-row">
+				<div class="form-inline">
+					<label>Documentos:&nbsp; &nbsp; </label>
+
+
+					<label>
+						<input name="documentosRad" type="radio" id="dui_rad" title="Ingrese DUI de la persona"
+							onClick="MM_showHideLayers('duil','','show','dui','','show','pasaport','','hide','pasorte','','hide')"
+							value="dui">
+						DUI&nbsp;&nbsp;</label>
+					<label id="pasaporte">
+						<input name="documentosRad" type="radio" id="pasapoterad"
+							title="Ingrese el pasaporte de la persona"
+							onClick="MM_showHideLayers('duil','','hide','dui','','hide','pasaport','','show','pasorte','','show')"
+							value="pasaporte">
+						Pasaporte</label>
+				</div>
+			</div>
+
+			<br>
+
+			<div class="form-row">
+				<div class="form-inline">
+					<label class="duil" id="duil">DUI&nbsp; &nbsp;</label>
+					<input type="text" class="form-control" id="dui" placeholder="DUI"
+						title="Ingrese el dui de la persona">
+					<label class="pasaport" id="pasaport">&nbsp; &nbsp; &nbsp; &nbsp; Pasaporte:&nbsp;&nbsp;</label>
+					<input type="text" class="form-control" id="pasorte" placeholder="Pasaporte"
+						title="Ingrese el pasaporte de la persona">
+				</div>
+			</div>
+			<br>
+			<div class="form-row">
+				<div class="form-inline">
+					<label>Pais</label>
+					<select>
+					</select>
+
+					<label>&nbsp; &nbsp; &nbsp; &nbsp; VISA:</label>
+					<input type="text" class="form-control" id="visasv" placeholder="VISA"
+						title="Ingrese la Visa de la persona">
+
+					<label>&nbsp; &nbsp; &nbsp; &nbsp; Es menor de edad:</label>
+
+					<label>
+						<input name="Menored" type="radio" id="Menored_0"
+							onClick="MM_showHideLayers('menore_e','','show','menor_edad','','show','menor','','show','vehivulorb_0','','hide','vehicula','','hide','radve','','hide')"
+							value="si">
+						Si</label>
+
+					<label id="vehicula">&nbsp; &nbsp; &nbsp; &nbsp; Autopropio:</label>
+
+					<label id="radve">
+						<input name="vehivulorb" type="radio" id="vehivulorb_0"
+							onClick="MM_showHideLayers('vehiculos_cm','','show','vehiculo','','show','vehiculos','','show')"
+							value="si">
+						Si</label>
+
+
+				</div>
+
+			</div>
+			<br>
+			<table id="menore_e" name="menore_e" width="780" style="visibility: collapse" border="2">
+				<tbody>
+					<tr>
+						<td>
+							<div class="container-fluid" id="menor_edad" style="visibility:hidden;">
+								<div id="menor" class="form-row" style="visibility: hidden;">
+									<div class="form-inline">
+										<label>Acompañado por:&nbsp;&nbsp;</label>
+
+										<label>
+											<input name="FamiliaresCheck" type="radio" id="FamiliaresCheck_0" title="Seleccione si va con ambos padres" onClick="MM_showHideLayers('dad','','show','daddy','','show','mom','','show','mommy','','show','autorime','','hide','yesa','','hide','autorizacionRad_0','','hide','noa','','hide','autorizacionRad_1','','hide','tuto','','hide','tutoe','','hide')"  value="ambosPadres" >
+											Ambos padres&nbsp; &nbsp;</label>
+										<label>
+											<input name="FamiliaresCheck" type="radio" id="FamiliaresCheck_1" title="Seleccione si lo acompaña su padre" onClick="MM_showHideLayers('dad','','show','daddy','','show','mom','','hide','mommy','','hide','autorime','','show','autorizacionRad_0','','show','autorizacionRad_1','','show','tuto','','hide','tutoe','','hide', 'noa','','show','yesa','','show')" value="padre" >
+											Padre&nbsp;&nbsp;</label> 
+										  
+										  <label>
+											<input name="FamiliaresCheck" type="radio" id="FamiliaresCheck_2" title="Solo si lo acompaña su madre" onClick="MM_showHideLayers('dad','','hide','daddy','','hide','mom','','show','mommy','','show','autorime','','show','autorizacionRad_0','','show','autorizacionRad_1','','show','tuto','','hide','tutoe','','hide', 'noa','','show','yesa','','show')" value="madre" >
+											Madre&nbsp;&nbsp;</label>
+										  <label>
+											<input name="FamiliaresCheck" type="radio" id="otrapersona" title="Seleccione si va acompañado de alguien que no sea alguno de sus padres" onClick="MM_showHideLayers('dad','','hide','daddy','','hide','mom','','hide','mommy','','hide','autorime','','show','autorizacionRad_0','','show','autorizacionRad_1','','show','tuto','','show','tutoe','','show', 'noa','','show','yesa','','show')" value="other" >
+											Otro</label><br></div>
+							<br>			
+									
+								  </div>
+							  
+								  <div id="padres del menor" class="form-row">
+									<div class="form-inline">
+									  <label id="dad">Padre:</label>
+										<input id="daddy" type="text" placeholder="Nombre padre" title="Ingrese el nombre del padre" size="150" maxlength="200">
+									  
+										  <label id="mom">Madre:</label>
+										  <input id="mommy" type="text" placeholder="Nombre madre" title="Ingrese el nombre de la madre" size="150" maxlength="200">
+									  </div>
+								<div class="form-row">
+									<div class="form-inline">
+									  <label id="autorime">Autorizacion:&nbsp;</label>
+										<label id="yesa">
+											  <input type="radio" name="autorizacionRad" value="si" id="autorizacionRad_0">
+									  Si&nbsp;&nbsp;</label>
+											 <label id="noa">
+											  <input type="radio" name="autorizacionRad" value="no" id="autorizacionRad_1">
+											  No</label>
+											
+								  </div>
+								   </div>
+									
+								<div class="form-row">
+								  <div class="form-inline">
+									<label id="tuto">Tutor:</label>
+									<input id="tutoe" type:="text" placeholder="Nombre del tutor" title="Ingrese el nombre del tutor encargado del menor" size="150" maxlength="200">
+									  <br>
+									</div>
+								 </div>
+								</div>
+								<br>
+
+
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<br><br>
+			<table width="780" id="vehiculos_cm" name="vehiculos_cm" style="visibility: collapse" border="1">
+				<tbody>
+					<tr>
+						<td>
+							<div class="container-fluid" id="vehiculo"
+								onfocus="MM_showHideLayers('vehiculo','','hide')">
+								<div id="vehiculos" class="form-row" nfocus="MM_showHideLayers('vehiculos','','hide')">
+									<div class="form-inline">
+										<label>Tipo:&nbsp;&nbsp;</label>
+
+										<label>
+											<input name="Carro" type="radio" id="carroCheck_0"
+												title="Seleccione si va en automovil" value="automovil">
+											Carro&nbsp; &nbsp;</label>
+										<label>
+											<input name="MotoCheck" type="radio" id="MotoCheck_1"
+												title="Seleccione si Va en moto" value="moto">
+											Moto&nbsp;&nbsp;</label>
+
+										<br>
+
+									</div>
+
+									<div id="transporte" class="form-row">
+										<div class="form-inline">
+											<label>Placa:</label>
+											<input type="text" placeholder="Numero dep  placa"
+												title="Ingrese el numero de la placa" size="150" maxlength="6">
+
+											<label>Marca:</label>
+											<input type="text" placeholder="Marca" title="Ingrese la marca" size="150"
+												maxlength="200">
+
+
+											<label>Modelo:</label>
+											<input type="text" placeholder="Modelo" title="Ingrese el modelo" size="150"
+												maxlength="200">
+										</div>
+									</div>
+
+
+								</div>
+
+
+
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+			<br>
+			<div class="form-row">
+				<div class="form-inline">
+					<label>Motivo:</label>
+					<select>
+					</select>
+
+					<label>&nbsp; &nbsp; &nbsp;Fecha de entrada:&nbsp;&nbsp;</label>
+					<input type="date" title="Ingrese la fecha de ingreso">
+					<label>&nbsp; &nbsp; &nbsp;Fecha de salia:&nbsp;&nbsp;</label>
+					<input type="date" title="Ingrese la fecha de salida">
+				</div>
+			</div>
+			<br>
+			<div class="form-row">
+				<div class="form-group-lg">
+					<a><img src='{% static "img/guardar-el-archivo.png" %}' alt="Guardar" width="50" height="50"
+							title="Guardar"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a><img
+							src='{% static "img/cancelar.png" %}' alt="Cancelar" width="51" height="50"
+							title="Cancelar"></a>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+	<script src='{% static "js/jquery-3.4.1.min.js" %}'></script>
+	<script src='{% static "js/popper.min.js" %}'></script>
+	<script src='{% static "js/bootstrap-4.4.1.js" %}'></script>
+</body>
+
+</html>
