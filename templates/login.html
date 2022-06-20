@@ -17,12 +17,12 @@
   <div class="container">
     <form method="post">
       {% csrf_token %}
-      <div class="container" >
+      <div class="container">
         <label for="uname"><b>Usuario</b></label>
-        <input type="text" placeholder="Ingrese nombre de usuario" name="username" required>
+        <input type="text" placeholder="Ingrese nombre de usuario"  id="idusername" name="username" required>
 
-        <label for="psw"><b>Contraseña</b></label>
-        <input type="password" placeholder="Ingrese su contraseña" name="password" required>
+        <label for="psw"><b>Constraseña</b></label>
+        <input type="password" placeholder="Ingrese su contraseña" id="id_password" name="password" required>
 
         <div class="botoninicio"> <button type="submit" class="inicio">Inicio</button></div>
 

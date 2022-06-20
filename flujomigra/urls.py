@@ -13,4 +13,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('salir/', views.salir, name='salir'),
     path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),),
+    
 ]

@@ -9,7 +9,7 @@ from django.db import models
 
 
 class Alertapersona(models.Model):
-    id_alerta = models.CharField(primary_key=True, max_length=7)
+    id_alerta = models.AutoField(primary_key=True)
     id_pais = models.ForeignKey('Pais', models.DO_NOTHING, db_column='id_pais', blank=True, null=True)
     nombre_paler = models.CharField(max_length=200, blank=True, null=True)
     motivo_aler = models.CharField(max_length=256, blank=True, null=True)
@@ -20,7 +20,7 @@ class Alertapersona(models.Model):
 
 
 class Alertavehiculo(models.Model):
-    id_alerv = models.CharField(primary_key=True, max_length=7)
+    id_alerv = models.AutoField(primary_key=True)
     id_pais = models.ForeignKey('Pais', models.DO_NOTHING, db_column='id_pais', blank=True, null=True)
     placa_a = models.CharField(max_length=10, blank=True, null=True)
     marca = models.CharField(max_length=100, blank=True, null=True)
@@ -153,6 +153,9 @@ class Motivodeviaje(models.Model):
     class Meta:
         managed = False
         db_table = 'motivodeviaje'
+        
+    def __str__(self):
+        return self.motivoviaje
 
 
 class Pais(models.Model):
@@ -162,13 +165,16 @@ class Pais(models.Model):
     class Meta:
         managed = False
         db_table = 'pais'
+        
+    def __str__(self):
+        return self.paisesn
 
 
 class Persona(models.Model):
-    id_persona = models.CharField(primary_key=True, max_length=7)
+    id_persona = models.AutoField(primary_key=True)
     id_vehi = models.ForeignKey('Vehiculo', models.DO_NOTHING, db_column='id_vehi')
-    id_motivo = models.ForeignKey(Motivodeviaje, models.DO_NOTHING, db_column='id_motivo')
-    id_pais = models.ForeignKey(Pais, models.DO_NOTHING, db_column='id_pais')
+    id_motivo = models.ForeignKey(Motivodeviaje, models.DO_NOTHING, db_column='id_motivo', choices=Motivodeviaje)
+    id_pais = models.ForeignKey(Pais, models.DO_NOTHING, db_column='id_pais', choices=Pais)
     nombre = models.CharField(max_length=200, blank=True, null=True)
     dui = models.CharField(max_length=10, blank=True, null=True)
     pasaporte = models.CharField(max_length=13, blank=True, null=True)
@@ -192,6 +198,8 @@ class Rol(models.Model):
         managed = False
         db_table = 'rol'
 
+    def __str__(self):
+        return self.rol
 
 class Usuarios(models.Model):
     id_usuario = models.CharField(primary_key=True, max_length=7)
@@ -205,9 +213,12 @@ class Usuarios(models.Model):
 
 
 class Vehiculo(models.Model):
-    id_vehi = models.CharField(primary_key=True, max_length=7)
+    id_vehi = models.AutoField(primary_key=True)
     placa = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'vehiculo'
+        
+    def __str__(self):
+        return self.placa

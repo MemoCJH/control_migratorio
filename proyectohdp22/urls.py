@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth.views import LoginView,logout_then_login
+#from django.contrib.auth.views import Templateview, logout_then_login
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('',LoginView, {'template_name':'templates/index.html'}),
+    #path('login/', auth_views.LoginView.as_view(template_name='templates/login.html'),name='login'),
     path('', include('flujomigra.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path()
 ]
